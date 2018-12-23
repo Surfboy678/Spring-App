@@ -2,6 +2,7 @@ package com.spring;
 
 import com.spring.domain.repository.KnightRepository;
 import com.spring.domain.repository.QuestRepository;
+import com.spring.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Scope;
@@ -19,12 +20,17 @@ public class Starter implements CommandLineRunner {
     @Autowired
     QuestRepository questRepository;
 
+    @Autowired
+    QuestService questService;
+
 
     @Override
     public void run(String... args) throws Exception {
 
+        questService.assignRandomQuest("Lancelot");
+        questService.assignRandomQuest("Percival");
+
         System.out.println(knightRepository);
-        System.out.println(questRepository);
 
 
 

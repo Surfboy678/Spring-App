@@ -1,6 +1,8 @@
 package com.spring.domain;
 
 
+import java.util.Objects;
+
 public class Knight {
 
     private String name;
@@ -33,7 +35,7 @@ public class Knight {
 
     @Override
     public int hashCode() {
-        return age;
+        return Objects.hash(age);
     }
 
 
@@ -45,7 +47,11 @@ public class Knight {
             this.age = age;
         }
 
+        public int getAge(){
+            return this.age;
+        }
+
     public String toString(){
-        return " Rycerz o imeniu " + " " + name + "(" + age + ")" + "Ma za zadanie:" + " " + quest;
+        return " Knight by name " + " " + name + "(" + age + ")" + "has the task:" + " " + quest;
     }
 }

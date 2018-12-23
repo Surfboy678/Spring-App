@@ -13,16 +13,13 @@ import java.util.Map;
 public class KnightRepository {
 
 
-    private String name;
+
     Map<String, Knight> knights = new HashMap<>();
 
     public KnightRepository(){
 
     }
 
-    KnightRepository(String name){
-        this.name = name;
-    }
 
     public void createKnight(String name, int age){
         knights.put(name, new Knight(name, age));
@@ -32,7 +29,7 @@ public class KnightRepository {
         return knights.values();
     }
 
-    public Knight getKnight(){
+    public Knight getKnight(String name){
         return knights.get(name);
     }
 
@@ -43,12 +40,7 @@ public class KnightRepository {
     @PostConstruct
     public void build(){
         createKnight("Lancelot", 29);
-        createKnight("Pecival", 25);
-    }
-
-
-    public void setName(String name){
-        this.name = name;
+        createKnight("Percival", 25);
     }
 
     @Override

@@ -18,9 +18,14 @@ public class QuestRepository {
     public List<Quest> getAll(){
         return questList;
     }
+
+    public void deleteQuest(Quest quest){
+        questList.remove(quest);
+    }
+
     @PostConstruct
     public void init(){
-        createQuest("Save princes");
+        createQuest("Save the princes");
         createQuest("go to the tournament");
     }
 
