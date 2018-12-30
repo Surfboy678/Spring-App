@@ -3,9 +3,15 @@
 <head>
     <title>Knight list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<table>
+<div class="container"></div>
+<table class="table">
     <thead>
     <tr>
         <td>Name knight</td>
@@ -20,4 +26,5 @@
     </tbody>
 </table>
 </body>
+
 </html>
