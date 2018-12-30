@@ -16,4 +16,6 @@ public interface KnightRepository {
 
 
     void build();
+
+    void createKnight(Knight knight);
 }
