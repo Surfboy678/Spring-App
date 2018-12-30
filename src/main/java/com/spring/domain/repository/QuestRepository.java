@@ -47,7 +47,6 @@ public class QuestRepository {
         description.add("kill the dragon");
 
         String descriptions = description.get(random.nextInt(description.size()));
-        System.out.println("do the mission:" + " " +  descriptions);
         createQuest(descriptions);
 
 

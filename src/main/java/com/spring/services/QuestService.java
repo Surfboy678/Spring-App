@@ -2,9 +2,11 @@ package com.spring.services;
 
 
 import com.spring.domain.Quest;
+import com.spring.domain.repository.InMemoryRepository;
 import com.spring.domain.repository.KnightRepository;
 import com.spring.domain.repository.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

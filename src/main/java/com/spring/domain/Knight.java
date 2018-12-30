@@ -51,6 +51,14 @@ public class Knight {
             return this.age;
         }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String toString(){
         return " Knight by name " + " " + name + "(" + age + ")" + "has the task:" + " " + quest;
     }

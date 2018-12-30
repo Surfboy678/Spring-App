@@ -1,12 +1,13 @@
 package com.spring;
 
-import com.spring.domain.repository.KnightRepository;
+import com.spring.domain.repository.InMemoryRepository;
 import com.spring.domain.Knight;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,7 +19,7 @@ public class ApplicationTests {
 	Knight knight;
 
 	@Autowired
-    KnightRepository knightRepository;
+    InMemoryRepository inMemoryRepository;
 
 	@Test
 	public void contextLoads() {
@@ -26,7 +27,7 @@ public class ApplicationTests {
 	@Test
 	public void testCastle(){
 		String except = "znaduje się tu zamek o nazwie Castle Black.Zamieszkały przez rycerza o imeniu  Lancelot(29)Ma za zadanie: Ukryj księżniczke";
-		assertEquals(except, knightRepository.toString());
+		assertEquals(except, inMemoryRepository.toString());
 
 	}
 
