@@ -1,6 +1,8 @@
 package com.spring.controllers;
 
+import com.spring.components.TimeComponent;
 import com.spring.domain.Knight;
+import com.spring.domain.PlayerInformation;
 import com.spring.services.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +18,28 @@ import java.util.List;
 public class KnightController {
 
     @Autowired
+    TimeComponent timeComponent;
+
+    @Autowired
+    PlayerInformation playerInformation;
+
+    @Autowired
     KnightService service;
 
     @RequestMapping("/knights")
     public String getKnights(Model model) {
         List<Knight> allKnights = service.getAllKnights();
         model.addAttribute("knights", allKnights);
+        model.addAttribute("timecomponent",timeComponent);
+        model.addAttribute("playerinformation", playerInformation);
         return "knights";
     }
     @RequestMapping("/knight")
     public String getKnight(@RequestParam("id") Integer id, Model model){
     Knight knight = service.getKnight(id);
     model.addAttribute("knight", knight);
+    model.addAttribute("timecomponent", timeComponent);
+    model.addAttribute("playerinformation", playerInformation);
     return "knight";
 
     }
@@ -35,6 +47,8 @@ public class KnightController {
     @RequestMapping("/newknight")
     public String createKnight(Model model) {
         model.addAttribute("knight", new Knight());
+        model.addAttribute("timecomponent", timeComponent);
+        model.addAttribute("playerinformation", playerInformation);
         return "knightform";
     }
 
