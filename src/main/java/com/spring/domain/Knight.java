@@ -1,12 +1,22 @@
 package com.spring.domain;
 
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Knight {
 
     private int id;
+
+    @NotNull
+   @Size(min = 2, max = 40)
     private String name;
+
+    @NotNull
+    @Range(min=18, max=60)
     private int age;
     private int level;
 
