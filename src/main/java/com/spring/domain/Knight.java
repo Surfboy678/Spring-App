@@ -12,12 +12,13 @@ public class Knight {
     private int id;
 
     @NotNull
-   @Size(min = 2, max = 40)
+    @Size(min = 2, max = 40)
     private String name;
 
     @NotNull
     @Range(min=18, max=60)
     private int age;
+
     private int level;
 
     private Quest quest;
@@ -46,8 +47,12 @@ public class Knight {
     }
 
     public void setQuest(Quest quest) {
-        System.out.println("Ustawiam zadanie dla rycerza.");
+        quest.setStarted(true);
         this.quest = quest;
+    }
+
+    public Quest getQuest() {
+        return quest;
     }
 
     public void setAge(int age) {
@@ -81,7 +86,6 @@ public class Knight {
     public void setLevel(int level) {
         this.level = level;
     }
-
     public String toString(){
         return " Knight by name " + " " + name + "(" + age + ")" + "has the task:" + " " + quest;
     }

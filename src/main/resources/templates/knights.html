@@ -21,6 +21,7 @@
     <tr>
         <td>Name knight</td>
         <td>Level</td>
+        <td>Quest</td>
         <td></td>
     </tr>
     </thead>
@@ -28,6 +29,10 @@
     <tr th:each=" knight : ${knights}">
         <td th:text="${knight.name}"></td>
         <td th:text="${knight.level}"></td>
+        <td>
+            <span th:if="${knight.quest==null}">No current task <a th:href="${'/assignQuest?knightId='+knight.id}">Assign a task</a></span>
+            <span th:if="${knight.quest!=null}" th:text="${knight.quest.description}"/>
+        </td>
         <td><a th:href="${'/knight?id='+knight.id}">Preview</a> </td>
         <td><a th:href="${'/knight/delete/'+knight.id}">Delete</a></td>
     </tr>

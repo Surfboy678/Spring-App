@@ -76,4 +76,5 @@ public class KnightController {
         service.deleteKnight(id);
         return "redirect:/knights";
     }
+
 }
