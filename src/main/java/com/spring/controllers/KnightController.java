@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -70,7 +71,7 @@ public class KnightController {
             return "redirect:/knights";
         }
     }
-    @RequestMapping(value = "/knight/delete/{id}")
+    @RequestMapping(value="/knight/delete/{id}")
     public String deleteKnight(@PathVariable("id") Integer id) {
         service.deleteKnight(id);
         return "redirect:/knights";

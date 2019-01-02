@@ -12,58 +12,50 @@ import java.util.Optional;
 
 public class InMemoryRepository implements KnightRepository {
 
-
-
     Map<Integer, Knight> knights = new HashMap<>();
 
-    public InMemoryRepository(){
+    public InMemoryRepository() {
 
     }
 
-
     @Override
-    public void createKnight(String name, int age){
+    public void createKnight(String name, int age) {
+
         Knight newKnight = new Knight(name, age);
         newKnight.setId(getNewId());
         knights.put(newKnight.getId(), newKnight);
     }
 
-    public int getNewId() {
-        if (knights.isEmpty()) {
-            return 0;
-        }else {
-            Integer integer = knights.keySet().stream().max(Integer::max).get();
-            return integer+1;
-        }
-    }
-
     @Override
-    public Collection<Knight> getAllKnights(){
+    public Collection<Knight> getAllKnights() {
         return knights.values();
     }
 
     @Override
-    public Optional<Knight> getKnight(String name){
+    public Optional<Knight> getKnight(String name) {
 
         Optional<Knight> knightByName = knights.values().stream().filter(knight -> knight.getName().equals(name)).findAny();
+
         return knightByName;
     }
 
     @Override
-    public void deleteKnight(Integer id){
+    public void deleteKnight(Integer id) {
+
         knights.remove(id);
     }
 
     @Override
     @PostConstruct
-    public void build(){
+    public void build() {
         createKnight("Lancelot", 29);
         createKnight("Percival", 25);
     }
 
     @Override
     public void createKnight(Knight knight) {
-        knights.put(knight.getName().hashCode(), knight);
+        knight.setId(getNewId());
+        knights.put(knight.getId(), knight);
     }
 
     @Override
@@ -73,8 +65,18 @@ public class InMemoryRepository implements KnightRepository {
 
     @Override
     public String toString() {
-        return "KnightRepository{" +
+        return "InMemoryRepository{" +
                 "knights=" + knights +
                 '}';
+    }
+
+    public int getNewId() {
+        if(knights.isEmpty()) {
+            return 0;
+        }
+        else {
+            Integer integer = knights.keySet().stream().max((o1, o2) -> o1.compareTo(o2)).get();
+            return integer+1;
+        }
     }
 }

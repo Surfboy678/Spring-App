@@ -29,7 +29,7 @@
         <td th:text="${knight.name}"></td>
         <td th:text="${knight.level}"></td>
         <td><a th:href="${'/knight?id='+knight.id}">Preview</a> </td>
-        <td><a  th:href="${'/knight/delete/'+knight.id}">Delete</a></td>
+        <td><a th:href="${'/knight/delete/'+knight.id}">Delete</a></td>
     </tr>
     </tbody>
 </table>
