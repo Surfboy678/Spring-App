@@ -20,7 +20,7 @@
         <input type="hidden" th:field="*{level}"/>
 
         <div class="form-group">
-            <label class="control-label">Wykonaj zadanie</label>
+            <label class="control-label">Complete the task</label>
             <select th:field="*{quest}">
                 <option th:each="quest : ${notStartedQuests}"
                         th:value="${quest.id}"
@@ -29,7 +29,7 @@
         </div>
 
         <div class="row">
-            <button type="submit" class="btn btn-default">Wyslij rycerza</button>
+            <button type="submit" class="btn btn-default">Send a knight</button>
         </div>
     </form>
 </div>
