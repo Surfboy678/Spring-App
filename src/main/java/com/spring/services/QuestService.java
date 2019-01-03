@@ -20,20 +20,21 @@ public class QuestService {
 
     QuestRepository questRepository;
 
-    final static Random random = new Random();
+    final static Random rand= new Random();
 
     public void assignRandomQuest(String knightName) {
         List<Quest> allQuests = questRepository.getAll();
-        Quest randomQuest = allQuests.get(random.nextInt(allQuests.size()));
+        Quest randomQuest = allQuests.get(rand.nextInt(allQuests.size()));
         knightRepository.getKnight(knightName).ifPresent(knight -> knight.setQuest(randomQuest));
-        questRepository.deleteQuest(randomQuest);
     }
 
     public List<Quest> getAllNotStartedQuests() {
-       return questRepository.getAll().stream().filter(quest -> !quest.isStarted()).collect(Collectors.toList());
+        return questRepository.getAll().stream().filter(quest -> !quest.isStarted()).collect(Collectors.toList());
     }
+
     @Autowired
     public void setQuestRepository(QuestRepository questRepository) {
         this.questRepository = questRepository;
     }
+
 }

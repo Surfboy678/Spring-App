@@ -14,18 +14,24 @@ public class KnightService {
     @Autowired
     KnightRepository knightRepository;
 
-    public List<Knight> getAllKnights(){
-       return new ArrayList<>(knightRepository.getAllKnights());
+    public List<Knight> getAllKnights() {
+        return new ArrayList<>(knightRepository.getAllKnights());
     }
 
-    public void saveKnight(Knight knight){
+
+    public void saveKnight(Knight knight) {
         knightRepository.createKnight(knight);
     }
 
-    public Knight getKnight(Integer id){
+    public Knight getKnight(Integer id) {
         return knightRepository.getKnightById(id);
     }
 
-    public void deleteKnight(Integer id) { knightRepository.deleteKnight(id);
+    public void deleteKnight(Integer id) {
+        knightRepository.deleteKnight(id);
+    }
+
+    public void updateKnight(Knight knight) {
+        knightRepository.updateKnight(knight.getId(), knight);
     }
 }

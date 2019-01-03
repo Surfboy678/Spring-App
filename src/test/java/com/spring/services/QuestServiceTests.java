@@ -22,12 +22,12 @@ public class QuestServiceTests {
     QuestRepository repositoryMock;
 
     @Test
-    public void returnsNotStartedQuest(){
+    public void returnsNotStartedQuests() {
 
         List<Quest> quests = new ArrayList<>();
-        Quest q1 = new Quest("Test quest 1");
-        Quest q2 = new Quest("Test quest 2");
-        Quest q3 = new Quest("Test quest 3");
+        Quest q1 = new Quest(1, "Test quest 1");
+        Quest q2 = new Quest(2, "Test quest 2");
+        Quest q3 = new Quest(3, "Test quest 3");
 
         q2.setStarted(true);
 
@@ -35,9 +35,11 @@ public class QuestServiceTests {
         quests.add(q2);
         quests.add(q3);
 
+
         when(repositoryMock.getAll()).thenReturn(quests);
 
         QuestService qs = new QuestService();
+
         qs.setQuestRepository(repositoryMock);
 
         List<Quest> allNotStartedQuests = qs.getAllNotStartedQuests();

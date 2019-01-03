@@ -4,6 +4,8 @@ package com.spring.domain;
 
 public class Quest {
 
+    private int id;
+
     private String description;
 
     private int reward = 100;
@@ -14,10 +16,13 @@ public class Quest {
 
     private boolean completed = false;
 
-    public Quest(String description) {
+    public Quest(int id, String description) {
+        this.id = id;
         this.description = description;
     }
-    public String toString(){
+
+    @Override
+    public String toString() {
         return description;
     }
 
@@ -59,5 +64,13 @@ public class Quest {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
