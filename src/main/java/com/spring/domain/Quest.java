@@ -8,7 +8,7 @@ public class Quest {
 
     private int reward = 100;
 
-    private int lengh = 30000;
+    private int lenght = 30000;
 
     private boolean started = false;
 
@@ -37,12 +37,12 @@ public class Quest {
         this.reward = reward;
     }
 
-    public int getLengh() {
-        return lengh;
+    public int getLenght() {
+        return lenght;
     }
 
-    public void setLengh(int lengh) {
-        this.lengh = lengh;
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
     }
 
     public boolean isStarted() {
