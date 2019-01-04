@@ -11,7 +11,7 @@ public class Quest {
 
     private int reward = 100;
 
-    protected int lenghtInSeconds = 30;
+    protected int lenghtInSeconds = 10;
 
     private boolean started = false;
 

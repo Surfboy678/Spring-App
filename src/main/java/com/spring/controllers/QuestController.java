@@ -1,6 +1,7 @@
 package com.spring.controllers;
 
 import com.spring.domain.Knight;
+import com.spring.domain.PlayerInformation;
 import com.spring.domain.Quest;
 import com.spring.services.KnightService;
 import com.spring.services.QuestService;
@@ -23,6 +24,9 @@ public class QuestController {
     @Autowired
     QuestService questService;
 
+    @Autowired
+    PlayerInformation playerInformation;
+
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);
@@ -41,4 +45,18 @@ public class QuestController {
         return "redirect:/knights";
     }
 
+    @RequestMapping(value = "/checkQuests")
+    public String checkQuests() {
+
+
+
+        knightService.getMyGold();
+        knightService.getMySilver();
+
+        return "redirect:/knights";
+
+
 }
+    }
+
+
