@@ -72,9 +72,9 @@ public class KnightService {
                 }
         );
         int currentGold = playerInformation.getGold();
-
-
         playerInformation.setGold(currentGold + collectRewards());
+
+
 
 
     }
@@ -90,7 +90,6 @@ public class KnightService {
         );
 
         int currentSilver = playerInformation.getSilver();
-
 
         playerInformation.setSilver(currentSilver + collectRewards());
 

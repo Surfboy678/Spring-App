@@ -34,8 +34,6 @@ public class QuestRepository {
     @PostConstruct
     public void init() {
 
-
-
     }
 
     @Override

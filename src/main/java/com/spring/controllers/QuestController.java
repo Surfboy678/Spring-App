@@ -27,6 +27,7 @@ public class QuestController {
     @Autowired
     PlayerInformation playerInformation;
 
+
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);
@@ -48,12 +49,13 @@ public class QuestController {
     @RequestMapping(value = "/checkQuests")
     public String checkQuests() {
 
+            knightService.getMyGold();
+            knightService.getMySilver();
 
-
-        knightService.getMyGold();
-        knightService.getMySilver();
 
         return "redirect:/knights";
+
+
 
 
 }

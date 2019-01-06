@@ -1,10 +1,14 @@
 package com.spring.domain;
 
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Quest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String description;
@@ -18,6 +22,10 @@ public class Quest {
     private boolean completed = false;
 
     protected LocalDateTime startDate;
+
+    public Quest(){
+
+    }
 
     public Quest(int id, String description) {
         this.id = id;
