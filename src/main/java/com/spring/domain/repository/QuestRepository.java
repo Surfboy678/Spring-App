@@ -1,66 +1,62 @@
 package com.spring.domain.repository;
 
 import com.spring.domain.Quest;
-import com.spring.utils.Ids;
+import javax.persistence.PersistenceContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Repository
 public class QuestRepository {
 
 
-    Random random = new Random();
+    @PersistenceContext
+    private EntityManager em;
 
-    Map<Integer,Quest> quests = new HashMap<>();
+    Random rand = new Random();
 
-
+    @Transactional
     public void createQuest(String description) {
-        int newId = Ids.generateNewId(quests.keySet());
-        Quest newQuest = new Quest(newId, description);
-        quests.put(newId, newQuest);
+
+        Quest newQuest = new Quest(description);
+
+        em.persist(newQuest);
+
     }
 
     public List<Quest> getAll() {
-        return  new ArrayList<>(quests.values());
+
+        return em.createQuery("from Quest", Quest.class).getResultList();
     }
 
+    @Transactional
     public void deleteQuest(Quest quest) {
-        quests.remove(quest.getId());
+        em.remove(quest);
     }
 
-    @PostConstruct
-    public void init() {
+    @Scheduled(fixedDelayString  = "${questCreationDelay}")
+    @Transactional
+    public void createRandomQuest() {
+        List<String> descriptions = new ArrayList<>();
 
+        descriptions.add("Save the Princes");
+        descriptions.add("Go to the tournament");
+        descriptions.add("Kill a bunch of goblins");
+        descriptions.add("kill the dragon");
+
+        String description = descriptions.get(rand.nextInt(descriptions.size()));
+        createQuest(description);
     }
 
-    @Override
-    public String toString() {
-        return "QuestRepository{" +
-                "questList=" + quests +
-                '}';
-    }
-    @Scheduled(fixedDelayString = "${questCreationDelay}")
-    public void createRandomQuest(){
-        List<String> description = new ArrayList<>();
-        description.add("Save the Princes");
-        description.add("Go to the tournament");
-        description.add("Kill a bunch of goblins");
-        description.add("kill the dragon");
-
-        String descriptions = description.get(random.nextInt(description.size()));
-        createQuest(descriptions);
-
-
-    }
+    @Transactional
     public void update(Quest quest) {
-        quests.put(quest.getId(),quest);
+        em.merge(quest);
     }
 
     public Quest getQuest(Integer id) {
-        return quests.get(id);
+        return em.find(Quest.class, id);
     }
 }
 

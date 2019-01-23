@@ -23,12 +23,16 @@ public class Quest {
 
     protected LocalDateTime startDate;
 
-    public Quest(){
+    public Quest() {
 
     }
 
     public Quest(int id, String description) {
         this.id = id;
+        this.description = description;
+    }
+
+    public Quest(String description) {
         this.description = description;
     }
 
@@ -45,40 +49,24 @@ public class Quest {
         this.description = description;
     }
 
-
-    public int getReward() {
-        return reward;
-    }
-
-    public void setReward(int reward) {
-        this.reward = reward;
-    }
-
-    public int getLenght() {
-        return lenghtInSeconds;
-    }
-
-    public void setLenght(int lenght) {
-        this.lenghtInSeconds = lenghtInSeconds;
-    }
-
     public boolean isStarted() {
         return started;
     }
 
     public void setStarted(boolean started) {
+
         if (started) {
             this.startDate = LocalDateTime.now();
         }
+
         this.started = started;
     }
 
     public boolean isCompleted() {
 
-        if (this.completed){
+        if (this.completed) {
             return this.completed;
         } else {
-
             LocalDateTime now = LocalDateTime.now();
 
             LocalDateTime questEndDate = this.startDate.plusSeconds(this.lenghtInSeconds);
@@ -99,5 +87,9 @@ public class Quest {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getReward() {
+        return reward;
     }
 }

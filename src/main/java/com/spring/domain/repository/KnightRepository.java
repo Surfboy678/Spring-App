@@ -4,6 +4,7 @@ import com.spring.domain.Knight;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -23,6 +24,8 @@ public interface KnightRepository {
 
     Knight getKnightById(Integer id);
 
-    default void updateKnight(int id, Knight knight) { throw new NotImplementedException(); }
+
+    @Transactional
+    void updateKnight(int id, Knight knight);
 }
 
