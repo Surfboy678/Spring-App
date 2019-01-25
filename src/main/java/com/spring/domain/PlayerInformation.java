@@ -1,8 +1,5 @@
 package com.spring.domain;
 
-
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,11 +14,22 @@ public class PlayerInformation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String username;
 
+    private String password;
+
+    private boolean enabled;
+
+
+    public PlayerInformation() {
+    }
+
+    public PlayerInformation(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.enabled = true;
+    }
     private int gold = 0;
-
-    public int silver = 0;
-
 
     public int getGold() {
         return gold;
@@ -30,6 +38,8 @@ public class PlayerInformation {
     public void setGold(int gold) {
         this.gold = gold;
     }
+
+    private int silver = 0;
 
     public int getSilver() {
         return silver;
