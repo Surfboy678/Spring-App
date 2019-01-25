@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Component
+
 @Entity
 public class PlayerInformation {
 
@@ -18,9 +18,10 @@ public class PlayerInformation {
     private int id;
 
 
-    public int gold = 0;
+    private int gold = 0;
 
     public int silver = 0;
+
 
     public int getGold() {
         return gold;

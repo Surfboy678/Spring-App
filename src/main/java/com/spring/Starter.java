@@ -1,7 +1,9 @@
 package com.spring;
 
+import com.spring.domain.PlayerInformation;
 import com.spring.domain.repository.InMemoryRepository;
 import com.spring.domain.repository.KnightRepository;
+import com.spring.domain.repository.PlayerInformationRepository;
 import com.spring.domain.repository.QuestRepository;
 import com.spring.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class Starter implements CommandLineRunner {
     @Autowired
     QuestService questService;
 
+    @Autowired
+    PlayerInformationRepository playerInformationRepository;
+
 
     @Override
     @Transactional
@@ -38,6 +43,8 @@ public class Starter implements CommandLineRunner {
         questRepository.createRandomQuest();
 
         knightRepository.createKnight("Percival",32);
+
+        playerInformationRepository.cretePlayerInformation(new PlayerInformation());
 
         questService.assignRandomQuest("Percival");
 

@@ -1,10 +1,6 @@
 package com.spring.domain.repository;
 
 import com.spring.domain.Knight;
-import org.springframework.stereotype.Repository;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
