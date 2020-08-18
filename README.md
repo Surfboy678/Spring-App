@@ -1,1 +1,1 @@
-"# Spring-App" 
+Prosta gra z interfejsem graficznym, w której wybieramy zadanie rycerzowi, ten natomiast po odpowiednim upływie czasu otrzymuje za nie złoto. Z poziomu administratora możemy utworzyć bądź usunąć rycerza.Technologie: java 8, spring boot, spring security, hibernate, H2, thymeleaf, maven.
